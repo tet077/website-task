@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css" >
+    <title>Informatics - Help</title>
+
+    <style>
+        .faq-question p,
+        .faq-answer p {
+            color: white; 
+        }
+        .faq-question i,
+        .faq-answer i {
+            color: white; 
+        }
+        .faq-question i:hover,
+        .faq-answer i:hover {
+            color: black; 
+        }
+
+      
+        .login-container,
+        .register-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>Informatics</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="login.php" class="link active">Log in</a></li>
+                    <li><a href="signup.html" class="link active">Sign up</a></li>
+                    <li><a href="help2.html" class="link">Help</a></li>
+                </ul>
+        </div>
+        <div class="nav-button">
+            <img src="moon.png" id="icon">
+        </div>
+        
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+    
+    <section class="help-section">
+        <div class="faq-container">
+            <div class="faq-question" onclick="toggleAnswer('answer1')">
+                <i class="bx bx-chevron-down"></i>
+                 <p id="word">What is the purpose of this page?</p> 
+            </div>
+            <div class="faq-answer" id="answer1">
+                <p id="answer">Our website allows you to post questions about technical issues that concern you, search for answers to previous questions, or even answer other users' questions if you know the solution.</p>
+            </div>
+
+        <div class="faq-container">
+            <div class="faq-question" onclick="toggleAnswer('answer2')">
+                <i class="bx bx-chevron-down"></i>
+                <p id="word">How can i resgister?</p>
+            </div>
+            <div class="faq-answer" id="answer2">
+                <p id="answer">You can register via the registration form</p>
+            </div>
+        </div>
+
+        
+
+    </section>
+</div>
+</div>
+
+<script>
+    function toggleAnswer(answerId) {
+        var answer = document.getElementById(answerId);
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+        } else {
+            answer.style.display = "block";
+        }
+    }
+
+    
+    window.onload = function () {
+        if (window.location.href.indexOf("help.html") !== -1) {
+            var loginBtn = document.getElementById("loginBtn");
+            var registerBtn = document.getElementById("registerBtn");
+            var loginForm = document.getElementById("login");
+            var registerForm = document.getElementById("register");
+
+            loginBtn.onclick = function () {
+                loginForm.style.display = "block";
+                registerForm.style.display = "none";
+            };
+
+            registerBtn.onclick = function () {
+                registerForm.style.display = "block";
+                loginForm.style.display = "none";
+            };
+        }
+    };
+</script>
+<script>
+    var loginBtn = document.getElementById("loginBtn");
+    var registerBtn = document.getElementById("registerBtn");
+
+    loginBtn.addEventListener("click", function() {
+        if (window.location.href.includes("help.html")) {
+            window.location.href = "index.php";
+        }
+    });
+
+    registerBtn.addEventListener("click", function() {
+        if (window.location.href.includes("help.html")) {
+            window.location.href = "index.php";
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var icon = document.getElementById("icon");
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-theme');
+            const isDarkMode = document.body.classList.contains('dark-theme');
+            localStorage.setItem('dark-mode', isDarkMode);
+            if (isDarkMode) {
+                icon.src = "sun.png";
+            } else {
+                icon.src = "moon.png";
+            }
+        }
+
+        icon.addEventListener('click', toggleDarkMode);
+
+        const isDarkModeSaved = localStorage.getItem('dark-mode');
+        if (isDarkModeSaved && isDarkModeSaved === 'true') {
+            toggleDarkMode();
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
+
+
+
